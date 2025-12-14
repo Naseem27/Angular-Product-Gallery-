@@ -1,0 +1,69 @@
+<div>
+  <div class="container">
+    <input
+      type="search"
+      placeholder="Search Products..."
+      [(ngModel)]="search"
+    />
+    <button id="sbtn" (click)="handleSearch()">Search</button>
+    <button id="cbtn" class="clbtn" (click)="handleClear()">Clear</button>
+  </div>
+
+  <p *ngIf="loading" id="status">Loading products...</p>
+
+  <p *ngIf="!loading && products.length === 0" id="status">
+    No products found
+  </p>
+
+  <ng-container *ngIf="!loading && products.length > 0">
+    <div class="cards">
+      <div
+        class="card"
+        *ngFor="let product of products; let i = index"
+        [attr.data-index]="i + 1"
+      >
+        <div class="card-bg"></div>
+
+        <div class="card-front">
+          <img [src]="product.thumbnail" [alt]="product.title" [title]="product.title" />
+
+          <div class="card-content">
+            <h2>{{ product.title }}</h2>
+            <div class="brand">{{ product.brand || 'No Brand' }}</div>
+            <p class="description">{{ product.description }}</p>
+
+            <div class="rate">
+              <div class="price">${{ product.price }}</div>
+              <div class="per">
+                ({{ product.discountPercentage }}% off)
+              </div>
+            </div>
+
+            <div class="rating">⭐ {{ product.rating }}</div>
+
+            <button class="viewbtn" (click)="viewDetails(product.id)">
+              View Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pagebtn">
+      <button (click)="prevPage()" [disabled]="skip === 0">Prev</button>
+      <button
+        (click)="nextPage()"
+        [disabled]="skip + limit >= total"
+      >
+        Next
+      </button>
+    </div>
+
+    <p id="status">
+      Showing {{ skip + 1 }}-{{
+        Math.min(skip + limit, total)
+      }}
+      of {{ total }} products
+    </p>
+  </ng-container>
+</div>

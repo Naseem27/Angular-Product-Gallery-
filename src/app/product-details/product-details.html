@@ -1,0 +1,81 @@
+<p *ngIf="loading" id="status">Loading product details...</p>
+<p *ngIf="!loading && !product" id="status">Product not found</p>
+
+<div *ngIf="!loading && product" class="details">
+  <h2>{{ product.title }}</h2>
+
+  <div
+    class="image-wrapper"
+    (mousemove)="handleMouseMove($event)"
+    (mouseenter)="showMagnifier = true"
+    (mouseleave)="showMagnifier = false"
+  >
+    <img
+      #imgRef
+      [src]="product.thumbnail"
+      [alt]="product.title"
+      class="product-img"
+    />
+
+    <div
+      *ngIf="showMagnifier"
+      class="magnifier"
+      [ngStyle]="{
+        top: magnifierPos.y - 60 + 'px',
+        left: magnifierPos.x - 60 + 'px',
+        backgroundImage:
+          'url(' +
+          (product.images?.[0] || product.thumbnail) +
+          ')',
+        backgroundPosition:
+          '-' +
+          (magnifierPos.x * 2 - 60) +
+          'px -' +
+          (magnifierPos.y * 2 - 60) +
+          'px'
+      }"
+    ></div>
+  </div>
+
+  <p><strong>Brand:</strong> {{ product.brand }}</p>
+  <p><strong>Description:</strong> {{ product.description }}</p>
+  <p><strong>Category:</strong> {{ product.category }}</p>
+  <p><strong>Price:</strong> ${{ product.price }}</p>
+  <p><strong>Discount:</strong> {{ product.discountPercentage }}% off</p>
+  <p><strong>Rating:</strong> ⭐ {{ product.rating }}</p>
+  <p><strong>Stock:</strong> {{ product.stock }}</p>
+  <p><strong>Warranty:</strong> {{ product.warrantyInformation || 'Not Available' }}</p>
+  <p><strong>Shipping:</strong> {{ product.shippingInformation || 'Standard Shipping' }}</p>
+  <p><strong>Availability:</strong> {{ product.availabilityStatus || 'Available' }}</p>
+  <p><strong>Return:</strong> {{ product.returnPolicy || 'No Return Policy' }}</p>
+
+  <div class="reviews">
+    <h3>Reviews</h3>
+
+    <ng-container
+      *ngIf="product.reviews?.length; else noReviews"
+    >
+      <div
+        class="review-item"
+        *ngFor="let rev of product.reviews"
+      >
+        <div class="review-rating">
+          <app-rating-star
+            [rating]="rev.rating"
+            [size]="18"
+          ></app-rating-star>
+          <span>{{ rev.rating.toFixed(1) }}</span>
+        </div>
+
+        <p class="rev-comment">{{ rev.comment }}</p>
+        <hr />
+      </div>
+    </ng-container>
+
+    <ng-template #noReviews>
+      <p>No Reviews Available</p>
+    </ng-template>
+  </div>
+
+  <button class="backbtn" (click)="handleBack()">Back</button>
+</div>

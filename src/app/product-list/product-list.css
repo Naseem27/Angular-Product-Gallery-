@@ -1,0 +1,205 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.container input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #000;
+  color: #0ff;
+  font-size: 1rem;
+  min-width: 220px;
+}
+
+.container button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.container button:not(.clbtn) {
+  background: #0ff;
+  color: #000;
+}
+
+.container button:hover:not(.clbtn) {
+  background: #0cc;
+}
+
+.container button.clbtn {
+  background: #333;
+  color: #eee;
+}
+
+.container button:hover.clbtn {
+  background: #444;
+}
+
+/* Cards Grid */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 40px;
+  justify-items: center;
+  align-items: start;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  transition: transform 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translate(-0.5rem, 0.5rem);
+  transition: transform 0.25s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card-front {
+  position: relative;
+  z-index: 1;
+  background-color: #eee;
+  border: 1px solid var(--card-color, #00d6e9);
+  padding: 6px;
+  height: 650px;
+}
+
+.card:nth-child(6n + 1) { --card-color: #00d6e9; }
+.card:nth-child(6n + 2) { --card-color: #15e3d9; }
+.card:nth-child(6n + 3) { --card-color: #56edbf; }
+.card:nth-child(6n + 4) { --card-color: #8cf5a2; }
+.card:nth-child(6n + 5) { --card-color: #c2f985; }
+.card:nth-child(6n + 6) { --card-color: #f9f871; }
+
+.card .card-bg {
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--card-color) 0,
+    var(--card-color) 4px,
+    transparent 0,
+    transparent 8px
+  );
+}
+
+.card:hover .card-bg {
+  transform: translate(-1rem, 1rem);
+}
+
+.card img {
+  width: 100%;
+}
+
+.card-content {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-content h2 {
+  font-size: 1.1rem;
+  color: #000;
+}
+
+.brand {
+  font-size: 0.85rem;
+  color: #000;
+  margin-top: 4px;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: gray;
+  margin: 8px 0;
+}
+
+.rate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.price {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: blue;
+}
+
+.per {
+  font-size: 0.9rem;
+  color: #000;
+}
+
+.rating {
+  margin: 8px 0;
+  color: #f5a623;
+  font-size: 0.9rem;
+}
+
+.viewbtn {
+  background-color: #0ff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: #000;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.viewbtn:hover {
+  background-color: #0cc;
+}
+
+/* Pagination */
+.pagebtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 25px 0;
+}
+
+.pagebtn button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #0ff;
+  color: #000;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.pagebtn button:hover {
+  background: #0cc;
+}
+
+.pagebtn button:disabled {
+  background: #333;
+  color: #777;
+  cursor: default;
+}

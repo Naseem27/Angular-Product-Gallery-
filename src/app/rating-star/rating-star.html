@@ -1,0 +1,78 @@
+<span
+  class="rating-wrapper"
+  [attr.aria-label]="'Rating: ' + r + ' out of 5'"
+  [attr.title]="r + ' / 5'"
+>
+  <span
+    *ngFor="let type of stars; let i = index"
+    class="star"
+    [style.width.px]="size"
+    [style.height.px]="size"
+  >
+    <!-- FULL STAR -->
+    <svg
+      *ngIf="type === 'full'"
+      [attr.width]="size"
+      [attr.height]="size"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+    >
+      <path
+        d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.788
+           1.402 8.168L12 18.896 4.664 23.166
+           l1.402-8.168L.132 9.21l8.2-1.192z"
+        [attr.fill]="color"
+      />
+    </svg>
+
+    <!-- EMPTY STAR -->
+    <svg
+      *ngIf="type === 'empty'"
+      [attr.width]="size"
+      [attr.height]="size"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+    >
+      <path
+        d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.788
+           1.402 8.168L12 18.896 4.664 23.166
+           l1.402-8.168L.132 9.21l8.2-1.192z"
+        [attr.fill]="emptyColor"
+      />
+    </svg>
+
+    <!-- HALF STAR -->
+    <svg
+      *ngIf="type === 'half'"
+      [attr.width]="size"
+      [attr.height]="size"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+    >
+      <defs>
+        <clipPath [attr.id]="'clip-left-' + uid + '-' + i">
+          <rect x="0" y="0" width="12" height="24" />
+        </clipPath>
+      </defs>
+
+      <g [attr.clip-path]="'url(#clip-left-' + uid + '-' + i + ')'">
+        <path
+          d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.788
+             1.402 8.168L12 18.896 4.664 23.166
+             l1.402-8.168L.132 9.21l8.2-1.192z"
+          [attr.fill]="color"
+        />
+      </g>
+
+      <path
+        d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.788
+           1.402 8.168L12 18.896 4.664 23.166
+           l1.402-8.168L.132 9.21l8.2-1.192z"
+        [attr.fill]="emptyColor"
+      />
+    </svg>
+  </span>
+</span>

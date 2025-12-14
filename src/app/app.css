@@ -1,0 +1,13 @@
+.App {
+  width: 100%;
+  max-width: 1200px;
+  min-width: 360px;
+  text-align: center;
+}
+
+.head {
+  margin-top: 32px;
+  padding: 16px;
+  font-size: large;
+  color: #0ff;
+}

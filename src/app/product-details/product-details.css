@@ -1,0 +1,102 @@
+.details {
+  padding: 20px;
+  background: #eee;
+  border-radius: 12px;
+  color: #222;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.product-img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.magnifier {
+  position: absolute;
+  pointer-events: none;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  background-repeat: no-repeat;
+  background-size: 800px 800px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+figure:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease;
+}
+
+.reviews {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: #111;
+  border-radius: 8px;
+  color: #eee;
+}
+
+.reviews h3 {
+  margin-bottom: 10px;
+  color: #0ff;
+}
+
+.review-item {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.review-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.rev-rating {
+  font-weight: bold;
+  color: #f5a623;
+}
+
+.rev-comment {
+  color: #ccc;
+  margin: 6px 0;
+}
+
+.rating-inline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.rating-inline .rating-value {
+  font-size: 0.9rem;
+  color: #444;
+  margin-left: 6px;
+}
+
+.backbtn {
+  background: #0ff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: #000;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.backbtn:hover {
+  background: #0cc;
+}

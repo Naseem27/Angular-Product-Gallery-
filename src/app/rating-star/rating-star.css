@@ -1,0 +1,11 @@
+.rating-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.star {
+  display: inline-block;
+  line-height: 0;
+  margin-right: 4px;
+}
